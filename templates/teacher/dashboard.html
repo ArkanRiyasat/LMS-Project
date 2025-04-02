@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Teacher Dashboard</h1>
+        <div class="welcome-text">Welcome, {{ current_user.username }}</div>
+    </div>
+    
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <i class="material-icons">school</i>
+            <div class="stat-info">
+                <h3>My Courses</h3>
+                <p>{{ courses_count }} Courses</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <i class="material-icons">groups</i>
+            <div class="stat-info">
+                <h3>Total Students</h3>
+                <p>{{ students_count }} Students</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <i class="material-icons">assignment</i>
+            <div class="stat-info">
+                <h3>Pending Submissions</h3>
+                <p>{{ pending_submissions }} To Grade</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button class="primary-btn" onclick="location.href='{{ url_for('courses.create') }}'">
+            <i class="material-icons">add</i> Create New Course
+        </button>
+        <button class="primary-btn" onclick="location.href='{{ url_for('assignments.create') }}'">
+            <i class="material-icons">assignment</i> Create Assignment
+        </button>
+    </div>
+
+    <div class="dashboard-sections">
+        <div class="section">
+            <div class="section-header">
+                <h2>My Courses</h2>
+                <a href="{{ url_for('courses.list') }}" class="view-all">View All</a>
+            </div>
+            <div class="course-grid">
+                {% for course in courses %}
+                <div class="course-card">
+                    <h3>{{ course.title }}</h3>
+                    <p>{{ course.students|length }} Students</p>
+                    <div class="card-actions">
+                        <a href="{{ url_for('courses.view', id=course.id) }}" class="btn-link">Manage</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h2>Recent Submissions</h2>
+                <a href="{{ url_for('assignments.submissions') }}" class="view-all">View All</a>
+            </div>
+            <div class="submissions-list">
+                {% for submission in recent_submissions %}
+                <div class="submission-item">
+                    <div class="submission-info">
+                        <h4>{{ submission.student.username }}</h4>
+                        <p>{{ submission.assignment.title }}</p>
+                    </div>
+                    <div class="submission-actions">
+                        <a href="{{ url_for('assignments.grade', id=submission.id) }}" class="btn-link">Grade</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

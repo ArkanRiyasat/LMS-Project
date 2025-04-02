@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Create New Assignment</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label for="title">Assignment Title</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Assignment Description</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="due_date">Due Date</label>
+            <input type="date" id="due_date" name="due_date" required>
+        </div>
+        <div class="form-group">
+            <label for="course_id">Course</label>
+            <select id="course_id" name="course_id" required>
+                {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Create Assignment</button>
+    </form>
+</div>
+{% endblock %}
