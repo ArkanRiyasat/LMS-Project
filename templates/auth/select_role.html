@@ -1,18 +1,39 @@
 {% extends "base.html" %}
 
+{% block body_class %}select-role-page{% endblock %}
+
 {% block content %}
+<div class="bg-image">
+    <video autoplay muted loop class="video-background">
+        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+    </video>
+</div>
+
 <div class="select-role-container">
-    <h1>Select User Type</h1>
+    <div class="welcome-header">
+        <h1>Welcome to LMS Portal</h1>
+        <p>Choose how you'd like to continue</p>
+    </div>
+
     <div class="role-cards">
         <a href="{{ url_for('auth.login_with_role', role='student') }}" class="role-card">
-            <i class="material-icons">school</i>
-            <h2>Student</h2>
-            <p>Access your courses and assignments</p>
+            <div class="role-icon">
+                <i class="material-icons">school</i>
+            </div>
+            <div class="role-info">
+                <h2>Student</h2>
+                <p>Access your courses and assignments</p>
+            </div>
         </a>
+
         <a href="{{ url_for('auth.login_with_role', role='teacher') }}" class="role-card">
-            <i class="material-icons">person</i>
-            <h2>Teacher</h2>
-            <p>Manage courses and students</p>
+            <div class="role-icon">
+                <i class="material-icons">person</i>
+            </div>
+            <div class="role-info">
+                <h2>Teacher</h2>
+                <p>Manage courses and students</p>
+            </div>
         </a>
     </div>
 </div>

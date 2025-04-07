@@ -1,48 +1,38 @@
 {% extends "base.html" %}
 
+{% block body_class %}auth-page{% endblock %}
+
 {% block content %}
-<div class="register-container">
-    <h1>Register New Account</h1>
-    
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-danger">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    
-    <div class="register-card">
-        <form method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select id="role" name="role" required>
-                    <option value="student">Student</option>
-                    <option value="teacher">Teacher</option>
-                </select>
-            </div>
-            
-            <button type="submit" class="btn-register">Register</button>
-        </form>
-        
-        <div class="form-footer">
-            <p>Already have an account? <a href="{{ url_for('auth.select_role') }}">Login here</a></p>
+<div class="bg-image">
+    <img src="{{ url_for('static', filename='images/registeration_page.png') }}" class="background-image" alt="background">
+</div>
+
+<div class="auth-container">
+    <h1>Register Your New Account</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
         </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-login">Register</button>
+    </form>
+    <div class="form-footer">
+        Already have an account? <a href="{{ url_for('auth.logout') }}">Login here</a>
     </div>
 </div>
 {% endblock %}

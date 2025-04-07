@@ -47,7 +47,8 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        flash(f'Congrats! You have registered as a {role}')
+        # In your register route
+        flash(f'Congrats! You have registered as a {role}. Please login to continue.', 'success')
         return redirect(url_for('auth.login_with_role', role=role))
 
     return render_template('auth/register.html')
