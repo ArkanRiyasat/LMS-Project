@@ -1,9 +1,11 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SECRET_KEY = 'your-secret-key-here'
+    # Update this line with your MySQL password
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:2005@localhost/lms'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
+    # Upload configuration
+    UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
+    MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size

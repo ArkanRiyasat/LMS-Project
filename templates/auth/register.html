@@ -8,31 +8,72 @@
 </div>
 
 <div class="auth-container">
-    <h1>Register Your New Account</h1>
-    <form method="POST">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+    <h1>Register</h1>
+    
+    <form method="POST" class="auth-form">
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                <span class="firstName-validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                <span class="lastName-validation-message"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <span class="email-validation-message"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+
+        <div class="form-row">
+            <div class="form-group full-width">
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+                <span class="phone-validation-message"></span>
+            </div>
         </div>
+
+        <div class="form-row">
+            <div class="form-group full-width">
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+            </div>
+        </div>
+        
         <div class="form-group">
-            <label for="role">Role</label>
-            <select id="role" name="role" required>
+            <select name="role" id="role" required>
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
             </select>
         </div>
+
+        <!-- Single captcha implementation -->
+        <div class="form-row">
+            <div class="form-group full-width">
+                <div class="captcha-wrapper">
+                    <div class="captcha-display" id="captchaCode"></div>
+                    <button type="button" class="refresh-btn" id="refreshCaptcha">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <input type="text" id="captchaInput" name="captcha" placeholder="Enter captcha code" required>
+            </div>
+        </div>
+
         <button type="submit" class="btn-login">Register</button>
     </form>
+
     <div class="form-footer">
         Already have an account? <a href="{{ url_for('auth.logout') }}">Login here</a>
     </div>
 </div>
+<!-- Add this before the closing </body> tag -->
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 {% endblock %}

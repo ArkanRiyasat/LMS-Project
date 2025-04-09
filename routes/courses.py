@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user
-from models import Course
-from extensions import db
+from models.course import Course  # Change from relative to absolute import
+from extensions import db  # Change from relative to absolute import
 
 courses = Blueprint('courses', __name__)
 

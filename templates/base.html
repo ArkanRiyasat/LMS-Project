@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assignments.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -22,7 +23,7 @@
                 <li><a href="{{ url_for('dashboard') }}"><i class="material-icons">dashboard</i>Dashboard</a></li>
                 <li><a href="{{ url_for('courses.list') }}"><i class="material-icons">school</i>Courses</a></li>
                 <li><a href="{{ url_for('assignments.list') }}"><i class="material-icons">assignment</i>Assignments</a></li>
-                <li><a href="{{ url_for('profile.view') }}"><i class="material-icons">person</i>Profile</a></li>
+                <li><a href="{{ url_for('profile.view_profile') }}"><i class="material-icons">person</i>Profile</a></li>
                 <li><a href="{{ url_for('auth.logout') }}"><i class="material-icons">exit_to_app</i>Logout</a></li>
             </ul>
         </nav>

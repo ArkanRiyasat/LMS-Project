@@ -68,8 +68,55 @@
     color: var(--primary-color);
 }
 
+/* Add these validation styles */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group input:invalid {
+    border-color: #ef4444;
+}
+
+.form-group input:valid {
+    border-color: #10b981;
+}
+
+.email-validation-message,
+.phone-validation-message {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    font-size: 0.8rem;
+    color: #ef4444;
+}
+
+/* Phone number specific styles */
+input[type="tel"] {
+    letter-spacing: 1px;
+}
+
+input[type="tel"]::placeholder {
+    letter-spacing: normal;
 }
 
 .form-group label {
@@ -174,7 +221,6 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(135deg, rgba(26, 35, 126, 0.8), rgba(13, 71, 161, 0.8));
 }
 
 .background-image {
@@ -185,8 +231,84 @@
 }
 
 .auth-container {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(5px);
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 3rem 4rem;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    max-height: 85vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    border-radius: 12px;
+}
+
+/* Update media query for better mobile responsiveness */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 2rem;
+        max-width: 90%;
+    }
+}
+
+.auth-container h1 {
+    font-size: 2.25rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.form-row {
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-group input, 
+.form-group select {
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.auth-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Custom scrollbar styles for webkit browsers */
+.auth-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.auth-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.auth-container::-webkit-scrollbar-thumb {
+    background: #1a237e;
+    border-radius: 3px;
+}
+
+.auth-container::-webkit-scrollbar-thumb:hover {
+    background: #0d47a1;
 }
 
 /* Update select-role-container for better contrast with video */
@@ -248,4 +370,184 @@
     background-color: #ecfdf5;
     color: #059669;
     border: 1px solid #a7f3d0;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;  /* Makes the element span full width */
+}
+
+/* Adjust spacing for full-width fields */
+.form-group.full-width input {
+    max-width: 100%;
+}
+
+.captcha-container {
+    margin: 1rem 0;
+}
+
+.captcha-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f0f2f5;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
+}
+
+.captcha-text {
+    flex-grow: 1;
+    font-family: 'Courier New', monospace;
+    font-size: 1.75rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #1a237e;
+    text-align: center;
+    user-select: none;
+    background: white;
+    padding: 0.75rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.captcha-box button {
+    background: #e8eaf6;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.captcha-box button:hover {
+    background: #c5cae9;
+    transform: rotate(180deg);
+}
+
+.captcha-box i {
+    color: #1a237e;
+    font-size: 1rem;
+}
+
+/* Clean up captcha styles */
+.captcha-wrapper {
+    background: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #e0e0e0;
+}
+
+.captcha-display {
+    background: #f8f9fa;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.75rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #1a237e;
+    text-align: center;
+    user-select: none;
+    flex-grow: 1;
+    position: relative;
+    transform: skew(-10deg);
+    background-image: 
+        linear-gradient(45deg, transparent 45%, #e0e0e0 45%, #e0e0e0 55%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, #e0e0e0 45%, #e0e0e0 55%, transparent 55%);
+    background-size: 10px 10px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.captcha-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: inherit;
+}
+
+.captcha-wrapper {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.refresh-btn {
+    background: #e8eaf6;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1a237e;
+}
+
+.refresh-btn:hover {
+    background: #c5cae9;
+    transform: rotate(180deg);
+}
+
+.refresh-btn i {
+    font-size: 1.1rem;
+}
+
+.captcha-box button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.captcha-box button:hover {
+    color: #1a237e;
+    transform: rotate(180deg);
+}
+
+.captcha-code {
+    background: #f0f2f5;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #1a237e;
+    user-select: none;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.refresh-captcha {
+    background: #e0e0e0;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #1a237e;
+    transition: all 0.3s ease;
+}
+
+.refresh-captcha:hover {
+    background: #d0d0d0;
+    transform: rotate(180deg);
 }

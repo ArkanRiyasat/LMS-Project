@@ -1,14 +1,14 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user
-from werkzeug.security import check_password_hash, generate_password_hash
-from models import User
-from extensions import db
+from models.user import User  # Change from relative to absolute import
+from extensions import db  # Change from relative to absolute import
+from werkzeug.security import check_password_hash, generate_password_hash  # Add this for password handling
 
 profile = Blueprint('profile', __name__)
 
 @profile.route('/profile')
 @login_required
-def view():
+def view_profile():
     return render_template('profile/view.html')
 
 @profile.route('/profile/edit', methods=['GET', 'POST'])
@@ -32,6 +32,6 @@ def edit():
         
         db.session.commit()
         flash('Profile updated successfully')
-        return redirect(url_for('profile.view'))
+        return redirect(url_for('profile.view_profile'))
 
     return render_template('profile/edit.html')

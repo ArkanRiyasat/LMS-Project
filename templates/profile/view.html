@@ -3,21 +3,44 @@
 {% block content %}
 <div class="profile-container">
     <div class="profile-header">
-        <h1>My Profile</h1>
-        <a href="{{ url_for('profile.edit') }}" class="btn-edit">Edit Profile</a>
+        <div class="header-left">
+            <div class="profile-avatar">S</div>
+            <div class="header-text">
+                <h1>My Profile</h1>
+                <p class="subtitle">Manage your account information</p>
+            </div>
+        </div>
+        <a href="{{ url_for('profile.edit') }}" class="edit-btn">
+            <i class="fas fa-edit"></i> Edit Profile
+        </a>
     </div>
 
-    <div class="profile-card">
-        <div class="profile-info">
-            <div class="info-group">
+    <div class="profile-info-card">
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="info-content">
                 <label>Username</label>
                 <p>{{ current_user.username }}</p>
             </div>
-            <div class="info-group">
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info-content">
                 <label>Email</label>
                 <p>{{ current_user.email }}</p>
             </div>
-            <div class="info-group">
+        </div>
+
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-user-tag"></i>
+            </div>
+            <div class="info-content">
                 <label>Role</label>
                 <p>{{ current_user.role.title() }}</p>
             </div>

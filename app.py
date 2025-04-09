@@ -1,24 +1,29 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_login import current_user, login_required
-from extensions import db, login_manager
-from models import User, Course, Assignment
+from extensions import db, migrate, login_manager  # Remove the dot
+from config import Config  # Remove the dot
+from models import User, Course, Assignment  # Remove the dot
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object('config.Config')
+    app.config.from_object(Config)
 
+    # Initialize extensions
     db.init_app(app)
+    migrate.init_app(app, db)
     login_manager.init_app(app)
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    from auth import auth
-    from courses import courses
-    from assignments import assignments
-    from profile import profile
-    
+    # Import blueprints
+    from routes.auth import auth  # Remove the dot
+    from routes.courses import courses
+    from routes.assignments import assignments
+    from routes.profile import profile
+
+    # Register blueprints
     app.register_blueprint(auth)
     app.register_blueprint(courses)
     app.register_blueprint(assignments)
