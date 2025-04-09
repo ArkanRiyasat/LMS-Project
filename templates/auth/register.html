@@ -4,74 +4,70 @@
 
 {% block content %}
 <div class="bg-image">
-    <img src="{{ url_for('static', filename='images/registeration_page.png') }}" class="background-image" alt="background">
+    <video autoplay muted loop class="video-background">
+        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+    </video>
 </div>
 
-<div class="auth-container">
+<div class="auth-container glass-effect">
     <h1>Register</h1>
     
     <form method="POST" class="auth-form">
         <div class="form-row">
             <div class="form-group">
-                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
                 <span class="firstName-validation-message"></span>
             </div>
-
             <div class="form-group">
-                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
                 <span class="lastName-validation-message"></span>
             </div>
         </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Choose a username" required>
-            </div>
-
-            <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                <span class="email-validation-message"></span>
-            </div>
+        <div class="form-group">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <span class="username-validation-message"></span>
         </div>
 
-        <div class="form-row">
-            <div class="form-group full-width">
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
-                <span class="phone-validation-message"></span>
-            </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+            <span class="email-validation-message"></span>
         </div>
 
-        <div class="form-row">
-            <div class="form-group full-width">
-                <input type="password" id="password" name="password" placeholder="Create a password" required>
-            </div>
+        <div class="form-group">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+            <span class="phone-validation-message"></span>
         </div>
-        
+
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <span class="password-validation-message"></span>
+        </div>
+
         <div class="form-group">
             <select name="role" id="role" required>
+                <option value="" disabled selected>Select Role</option>
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
             </select>
         </div>
 
-        <!-- Single captcha implementation -->
-        <div class="form-row">
-            <div class="form-group full-width">
-                <div class="captcha-wrapper">
-                    <div class="captcha-display" id="captchaCode"></div>
-                    <button type="button" class="refresh-btn" id="refreshCaptcha">
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
-                </div>
-                <input type="text" id="captchaInput" name="captcha" placeholder="Enter captcha code" required>
+        <div class="form-group">
+            <div class="captcha-wrapper glass-card">
+                <div class="captcha-display" id="captchaCode"></div>
+                <button type="button" class="refresh-btn" id="refreshCaptcha">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
             </div>
+            <input type="text" id="captchaInput" name="captcha" placeholder="Enter Captcha" required>
+            <span class="captcha-validation-message"></span>
         </div>
 
-        <button type="submit" class="btn-login">Register</button>
+        <button type="submit" class="btn-login">Create Account</button>
     </form>
 
     <div class="form-footer">
-        Already have an account? <a href="{{ url_for('auth.logout') }}">Login here</a>
+        Already have an account? <a href="{{ url_for('auth.select_role') }}">Login here</a>
     </div>
 </div>
 <!-- Add this before the closing </body> tag -->

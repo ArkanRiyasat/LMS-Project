@@ -312,38 +312,49 @@ input[type="tel"]::placeholder {
 }
 
 /* Update select-role-container for better contrast with video */
+/* Update select-role-container styles */
 .select-role-container {
     max-width: 800px;
-    padding: 2.5rem;
+    padding: 3rem;
     text-align: center;
-    background: rgba(255, 255, 255, 0.95);
+    background: white;
     border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 1;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
 }
+
+.welcome-header h1 {
+    color: #1a237e;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
 .role-cards {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 2.5rem;
+    margin: 2rem 0;
 }
 
 .role-card {
-    background: var(--white);
-    padding: 2rem;
+    background: white;
+    padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    width: 240px;
-    text-decoration: none;
-    color: var(--text-color);
+    width: 280px;
+    text-align: center;
 }
 
 .role-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .role-icon {
@@ -351,18 +362,51 @@ input[type="tel"]::placeholder {
 }
 
 .role-icon i {
-    font-size: 3rem;
-    color: var(--primary-color);
+    font-size: 2.5rem;
+    color: #1a237e;
 }
 
-.role-info h2 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+.role-card h2 {
+    color: #1a237e;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
-.role-info p {
-    color: var(--light-text);
-    font-size: 0.9rem;
+.role-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #1a237e;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background: #0d47a1;
+    transform: translateY(-2px);
+}
+
+.register-link {
+    margin-top: 2rem;
+}
+
+.register-link a {
+    color: #4B0082;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
 }
 
 /* Add this to your existing alert styles */
@@ -550,4 +594,116 @@ input[type="tel"]::placeholder {
 .refresh-captcha:hover {
     background: #d0d0d0;
     transform: rotate(180deg);
+
+}.glass-card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.select-role-container.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    max-width: 900px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #1a237e;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #1a237e;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.form-group select option {
+    background: white;
+    color: #1a237e;
+}
+
+.auth-container {
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.auth-container h1 {
+    color: #1a237e;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #1a237e;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+    color: #666;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1a237e;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 1rem;
+    background: #1a237e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: #0d47a1;
+    transform: translateY(-2px);
+}
+
+.form-footer {
+    margin-top: 2rem;
+    color: #1a237e;
+}
+
+.form-footer a {
+    color: #4B0082;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
 }

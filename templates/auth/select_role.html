@@ -9,32 +9,34 @@
     </video>
 </div>
 
-<div class="select-role-container">
+<div class="select-role-container glass-effect">
     <div class="welcome-header">
         <h1>Welcome to LMS Portal</h1>
         <p>Choose how you'd like to continue</p>
     </div>
 
     <div class="role-cards">
-        <a href="{{ url_for('auth.login_with_role', role='student') }}" class="role-card">
+        <div class="role-card glass-card">
             <div class="role-icon">
-                <i class="material-icons">school</i>
+                <i class="fas fa-graduation-cap"></i>
             </div>
-            <div class="role-info">
-                <h2>Student</h2>
-                <p>Access your courses and assignments</p>
-            </div>
-        </a>
+            <h2>Student</h2>
+            <p>Access your courses and assignments</p>
+            <a href="{{ url_for('auth.login_with_role', role='student') }}" class="login-button">Login as Student</a>
+        </div>
 
-        <a href="{{ url_for('auth.login_with_role', role='teacher') }}" class="role-card">
+        <div class="role-card glass-card">
             <div class="role-icon">
-                <i class="material-icons">person</i>
+                <i class="fas fa-user"></i>
             </div>
-            <div class="role-info">
-                <h2>Teacher</h2>
-                <p>Manage courses and students</p>
-            </div>
-        </a>
+            <h2>Teacher</h2>
+            <p>Manage courses and students</p>
+            <a href="{{ url_for('auth.login_with_role', role='teacher') }}" class="login-button">Login as Teacher</a>
+        </div>
+    </div>
+
+    <div class="register-link">
+        <a href="{{ url_for('auth.register') }}">Register Now</a>
     </div>
 </div>
 {% endblock %}
