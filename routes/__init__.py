@@ -1,1 +1,4 @@
-# Empty file to make the directory a Python package
+from .auth import auth
+from .courses import courses
+from .assignments import assignments
+from .profile import profile

@@ -1,9 +1,7 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
-from flask_login import login_required, current_user
-from models.assignment import Assignment
-from models.course import Course
-from extensions import db
-from datetime import datetime
+from flask import Blueprint, render_template
+from flask_login import login_required
+from models.assignment import Assignment  # Change to absolute import
+from extensions import db  # Change to absolute import
 
 assignments = Blueprint('assignments', __name__)
 

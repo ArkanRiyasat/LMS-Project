@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, current_user
-from models.user import User  # Change from relative to absolute import
-from extensions import db  # Change from relative to absolute import
-from werkzeug.security import check_password_hash, generate_password_hash  # Add this for password handling
+from models.user import User  # Change to absolute import
+from extensions import db  # Change to absolute import
 
 profile = Blueprint('profile', __name__)
 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container glass-effect">
+    <h1>User Statistics</h1>
+    
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>Total Users</h3>
+            <p>{{ total_users }}</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Verified Users</h3>
+            <p>{{ verified_users }}</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Unverified Users</h3>
+            <p>{{ unverified_users }}</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Users by Role</h3>
+            <p>Students: {{ users_by_role.student }}</p>
+            <p>Teachers: {{ users_by_role.teacher }}</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Verified Users by Role</h3>
+            <p>Students: {{ verified_by_role.student }}</p>
+            <p>Teachers: {{ verified_by_role.teacher }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
