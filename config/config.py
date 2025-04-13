@@ -27,4 +27,6 @@ class Config:
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = os.getenv('MAIL_USERNAME')
     MAIL_USE_SSL = False
-    MAIL_DEBUG = True
+    MAIL_MAX_EMAILS = None
+    MAIL_ASCII_ATTACHMENTS = False
+    # Remove MAIL_DEBUG = True as it's not needed

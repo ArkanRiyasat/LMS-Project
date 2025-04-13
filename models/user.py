@@ -13,5 +13,5 @@ class User(UserMixin, db.Model):
     phone = db.Column(db.String(20))
     password = db.Column(db.String(200), nullable=False)
     role = db.Column(db.String(20), nullable=False)
-    is_verified = db.Column(db.Boolean, default=False, nullable=False)  # Add nullable=False
-    email_verified = db.Column(db.Boolean, default=False)
+    is_verified = db.Column(db.Boolean, default=False, nullable=False)
+    # Remove email_verified if it exists
