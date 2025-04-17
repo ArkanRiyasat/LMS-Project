@@ -1,49 +1,79 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="profile-container">
+<div class="main-content">
     <div class="profile-header">
-        <div class="header-left">
-            <div class="profile-avatar">S</div>
-            <div class="header-text">
-                <h1>My Profile</h1>
-                <p class="subtitle">Manage your account information</p>
+        <h1>My Profile</h1>
+        <p>Manage your account information</p>
+    </div>
+
+    <div class="profile-info-card">
+        {% for field in [('Username', current_user.username), ('Email', current_user.email), ('Role', current_user.role|title)] %}
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas {% if field[0] == 'Username' %}fa-user{% elif field[0] == 'Email' %}fa-envelope{% else %}fa-id-badge{% endif %}"></i>
+            </div>
+            <div class="info-content">
+                <label>{{ field[0] }}</label>
+                <p>{{ field[1] }}</p>
             </div>
         </div>
-        <a href="{{ url_for('profile.edit') }}" class="edit-btn">
-            <i class="fas fa-edit"></i> Edit Profile
+        {% endfor %}
+        
+        {% if current_user.bio %}
+        <div class="info-item">
+            <div class="info-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="info-content">
+                <label>Bio</label>
+                <p>{{ current_user.bio }}</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        <a href="{{ url_for('profile.edit') }}" class="btn-edit">
+            <i class="fas fa-edit"></i>
+            Edit Profile
         </a>
     </div>
 
     <div class="profile-info-card">
-        <div class="info-item">
-            <div class="info-icon">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="info-content">
-                <label>Username</label>
-                <p>{{ current_user.username }}</p>
-            </div>
-        </div>
-
-        <div class="info-item">
-            <div class="info-icon">
-                <i class="fas fa-envelope"></i>
-            </div>
-            <div class="info-content">
-                <label>Email</label>
-                <p>{{ current_user.email }}</p>
-            </div>
-        </div>
-
-        <div class="info-item">
-            <div class="info-icon">
-                <i class="fas fa-user-tag"></i>
-            </div>
-            <div class="info-content">
-                <label>Role</label>
-                <p>{{ current_user.role.title() }}</p>
-            </div>
+        <h2>Account Statistics</h2>
+        <div class="stats-grid">
+            {% if current_user.role == 'teacher' %}
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <h3>{{ stats.courses_count }}</h3>
+                    <p>Courses Created</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3>{{ stats.students_count }}</h3>
+                    <p>Total Students</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>{{ stats.pending_submissions }}</h3>
+                    <p>Pending Submissions</p>
+                </div>
+            {% else %}
+                <div class="stat-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>{{ stats.enrolled_courses }}</h3>
+                    <p>Enrolled Courses</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>{{ stats.completed_assignments }}</h3>
+                    <p>Completed Assignments</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>{{ stats.pending_assignments }}</h3>
+                    <p>Pending Assignments</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

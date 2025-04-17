@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from extensions import db, migrate, login_manager
 from models import User, Course, Assignment
 from routes import auth, courses, assignments, profile
-from config.config import Config
+from config import Config
 from flask_assets import Environment, Bundle
 
 def create_app():
@@ -62,4 +62,5 @@ def create_app():
 
 app = create_app()
 
-
+if __name__ == '__main__':
+    app.run(debug=True)

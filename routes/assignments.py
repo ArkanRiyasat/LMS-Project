@@ -1,9 +1,15 @@
-from flask import Blueprint, render_template
-from flask_login import login_required
-from models.assignment import Assignment  # Change to absolute import
-from extensions import db  # Change to absolute import
+from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask_login import login_required, current_user
+from ..models.assignment import Assignment  # Changed to relative import
+from ..extensions import db  # Changed to relative import
 
 assignments = Blueprint('assignments', __name__)
+
+@assignments.route('/assignments')
+@login_required
+def list():
+    assignments = Assignment.query.all()
+    return render_template('assignments/list.html', assignments=assignments)
 
 @assignments.route('/assignments/create', methods=['GET', 'POST'])
 @login_required
@@ -37,15 +43,6 @@ def create():
         return redirect(url_for('assignments.list'))
         
     return render_template('assignments/create.html', courses=courses)
-
-@assignments.route('/assignments')
-@login_required
-def list():
-    if current_user.role == 'teacher':
-        assignments = Assignment.query.join(Course).filter(Course.teacher_id == current_user.id).all()
-    else:
-        assignments = Assignment.query.all()
-    return render_template('assignments/list.html', assignments=assignments)
 
 @assignments.route('/assignments/submissions')
 @login_required

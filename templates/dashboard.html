@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if current_user.role == 'teacher' %}
+    {% include 'teacher/dashboard.html' %}
+{% elif current_user.role == 'student' %}
+    {% include 'student/dashboard.html' %}
+{% endif %}
+{% endblock %}

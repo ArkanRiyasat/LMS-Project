@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="course-detail-container">
+    <div class="course-header">
+        <h1>{{ course.title }}</h1>
+        {% if current_user.role == 'teacher' %}
+        <a href="{{ url_for('courses.edit', id=course.id) }}" class="btn-edit">
+            <i class="material-icons">edit</i> Edit Course
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="course-description">
+        <p>{{ course.description }}</p>
+    </div>
+
+    <div class="course-assignments">
+        <h2>Assignments</h2>
+        {% for assignment in course.assignments %}
+        <div class="assignment-item">
+            <h3>{{ assignment.title }}</h3>
+            <p>Due: {{ assignment.due_date.strftime('%Y-%m-%d') }}</p>
+            {% if current_user.role == 'student' %}
+            <a href="#" class="btn-submit">Submit Assignment</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
